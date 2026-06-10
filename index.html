@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Dulces Delicias | Los Postres Más Deliciosos de la Ciudad</title>
+    <meta name="description" content="Brownies, Tres Leches y Tortas artesanales elaboradas con ingredientes de primera calidad. Haz tu pedido a domicilio hoy mismo.">
+    <meta name="keywords" content="postres, repostería, brownies, tres leches, tortas, dulces delicias, pastelería artesanal">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dulces Delicias | Postres Artesanales Premium">
+    <meta property="og:description" content="Disfruta de los mejores brownies, tres leches y tortas de la ciudad. Pedidos rápidos por WhatsApp.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://dulcesdelicias.com">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            rosa: '#F3CFC6',
+                            crema: '#FDFBF7',
+                            chocolate: '#3D2314',
+                            chocolateLight: '#5C3A21',
+                            gold: '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados para Masonry y detalles Premium */
+        .masonry {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) { .masonry { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry { column-count: 4; } }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+        .bg-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Bakery",
+      "name": "Dulces Delicias",
+      "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
+      "telephone": "+59169259874",
+      "url": "https://dulcesdelicias.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santa Cruz",
+        "addressCountry": "BO"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }
+    }
+    </script>
+</head>
+<body class="bg-brand-crema text-brand-chocolate font-sans antialiased overflow-x-hidden">
+
+    <nav class="sticky top-0 z-40 bg-brand-crema/80 bg-blur border-b border-brand-rosa/30 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="font-serif text-2xl font-bold tracking-wide text-brand-chocolate flex items-center gap-2">
+                <span class="text-brand-rosa text-3xl">🌸</span> Dulces <span class="text-brand-chocolateLight font-light">Delicias</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#inicio" class="hover:text-brand-rosa transition">Inicio</a>
+                <a href="#nosotros" class="hover:text-brand-rosa transition">Nosotros</a>
+                <a href="#menu" class="hover:text-brand-rosa transition">Menú</a>
+                <a href="#galeria" class="hover:text-brand-rosa transition">Galería</a>
+                <a href="#promos" class="hover:text-brand-rosa transition">Promociones</a>
+                <a href="#faq" class="hover:text-brand-rosa transition">Preguntas</a>
+            </div>
+            <a href="https://wa.me/59169259874?text=Hola,%20deseo%20realizar%20un%20pedido%20de%20postres." target="_blank" class="hidden md:flex items-center gap-2 bg-brand-chocolate text-white px-5 py-2.5 rounded-full hover:bg-brand-chocolateLight transition font-semibold text-sm tracking-wide shadow-md">
+                <i class="fab fa-whatsapp text-lg"></i> Pedir Ahora
+            </a>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-brand-chocolate p-2 text-xl focus:outline-none">
+                <i id="menu-icon" class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-crema border-b border-brand-rosa/30 px-6 py-4 space-y-3 absolute w-full left-0 shadow-lg">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block font-medium hover:text-brand-rosa">Inicio</a>
+            <a href="#nosotros" onclick="toggleMobileMenu()" class="block font-medium hover:text-brand-rosa">Nosotros</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block font-medium hover:text-brand-rosa">Menú</a>
+            <a href="#galeria" onclick="toggleMobileMenu()" class="block font-medium hover:text-brand-rosa">Galería</a>
+            <a href="#promos" onclick="toggleMobileMenu()" class="block font-medium hover:text-brand-rosa">Promociones</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block font-medium hover:text-brand-rosa">Preguntas</a>
+            <a href="https://wa.me/59169259874?text=Hola,%20deseo%20realizar%20un%20pedido%20de%20postres." target="_blank" class="w-full flex items-center justify-center gap-2 bg-brand-chocolate text-white px-5 py-2.5 rounded-full font-semibold text-sm">
+                <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative min-h-[calc(100vh-5rem)] flex items-center py-12 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-brand-crema via-brand-crema to-brand-rosa/20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div data-aos="fade-right" data-aos-duration="1000">
+                <span class="inline-block bg-brand-rosa/30 text-brand-chocolateLight px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">🍰 Hecho con amor, 100% Artesanal</span>
+                <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-brand-chocolate mb-6">
+                    Los Postres Más <span class="text-brand-chocolateLight italic underline decoration-brand-rosa">Deliciosos</span> de la Ciudad
+                </h1>
+                <p class="text-lg text-brand-chocolate/80 mb-10 max-w-xl leading-relaxed">
+                    Brownies, Tres Leches y Tortas elaboradas con ingredientes de primera calidad para endulzar tus momentos especiales.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#menu" class="flex items-center justify-center bg-brand-chocolate text-white px-8 py-4 rounded-full font-bold hover:bg-brand-chocolateLight transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        Ver Menú <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                    <a href="https://wa.me/59169259874?text=Hola,%20deseo%20realizar%20un%20pedido%20de%20postres." target="_blank" class="flex items-center justify-center bg-white border-2 border-brand-rosa text-brand-chocolate px-8 py-4 rounded-full font-bold hover:bg-brand-rosa/20 transition shadow-sm">
+                        <i class="fab fa-whatsapp mr-2 text-emerald-600 text-lg"></i> Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="relative flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+                <div class="absolute -top-4 -left-4 w-72 h-72 bg-brand-rosa/40 rounded-full blur-3xl -z-10"></div>
+                <div class="relative w-full max-w-md sm:max-w-lg aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Postres Artesanales Premium" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white border-y border-brand-rosa/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+                <div class="p-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-brand-rosa/20 rounded-full flex items-center justify-center mx-auto mb-3 text-brand-chocolate text-xl"><i class="fas fa-leaf"></i></div>
+                    <h4 class="font-bold text-sm">Ingredientes frescos</h4>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-brand-rosa/20 rounded-full flex items-center justify-center mx-auto mb-3 text-brand-chocolate text-xl"><i class="fas fa-mortar-pestle"></i></div>
+                    <h4 class="font-bold text-sm">Elaboración artesanal</h4>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-brand-rosa/20 rounded-full flex items-center justify-center mx-auto mb-3 text-brand-chocolate text-xl"><i class="fas fa-shipping-fast"></i></div>
+                    <h4 class="font-bold text-sm">Entrega rápida</h4>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 bg-brand-rosa/20 rounded-full flex items-center justify-center mx-auto mb-3 text-brand-chocolate text-xl"><i class="fas fa-heart"></i></div>
+                    <h4 class="font-bold text-sm">Atención personalizada</h4>
+                </div>
+                <div class="p-2 col-span-2 md:col-span-1" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-12 h-12 bg-brand-rosa/20 rounded-full flex items-center justify-center mx-auto mb-3 text-brand-chocolate text-xl"><i class="fab fa-whatsapp"></i></div>
+                    <h4 class="font-bold text-sm">Pedidos por WhatsApp</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-2 gap-4" data-aos="zoom-in" data-aos-duration="1000">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80" alt="Preparación artesanal" class="w-full h-64 object-cover rounded-xl shadow-md transform -translate-y-4">
+                <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=400&q=80" alt="Ingredientes Premium" class="w-full h-64 object-cover rounded-xl shadow-md">
+            </div>
+            <div data-aos="fade-left" data-aos-duration="1000">
+                <span class="text-brand-rosa font-serif text-xl italic block mb-2">Nuestra Historia</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold mb-6 text-brand-chocolate">Pasión por los Postres</h2>
+                <p class="text-brand-chocolate/80 leading-relaxed mb-6">
+                    En <strong>Dulces Delicias</strong>, convertimos la repostería tradicional en una experiencia de lujo accesible. Cada uno de nuestros postres nace de una receta familiar perfeccionada, elaborada a mano con un riguroso estándar de calidad.
+                </p>
+                <p class="text-brand-chocolate/80 leading-relaxed mb-8">
+                    Utilizamos únicamente ingredientes frescos y de primera categoría: chocolates seleccionados, lácteos de la mejor calidad y frutas del día. Nos apasiona la frescura, por lo que horneamos a diario para garantizar una textura inigualable y una entrega rápida directo a tu mesa.
+                </p>
+                <div class="border-l-4 border-brand-rosa pl-4 italic text-brand-chocolateLight font-medium">
+                    "No solo vendemos postres, creamos instantes de felicidad que se derriten en tu boca."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-24 bg-white px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand-rosa font-serif text-xl italic block mb-2">Tentaciones Exclusivas</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-brand-chocolate">Nuestro Exquisito Menú</h2>
+                <div class="w-24 h-1 bg-brand-rosa mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="mb-16">
+                <h3 class="font-serif text-2xl font-bold mb-8 flex items-center gap-3 text-brand-chocolateLight" data-aos="fade-right">
+                    <span class="w-8 h-0.5 bg-brand-rosa"></span> Brownies Premium
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80" alt="Brownie Clásico" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-xl font-bold mb-2">Brownie Clásico</h4>
+                                <p class="text-brand-chocolate/70 text-sm mb-4">Textura melcochosa por dentro y capa crujiente por fuera. Puro cacao seleccionado.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-4">
+                                <span class="font-bold text-xl text-brand-chocolateLight">Bs. 15</span>
+                                <button onclick="pedirProducto('Brownie Clásico', 'Bs. 15')" class="bg-brand-chocolate text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-brand-chocolateLight transition uppercase tracking-wider">Pedir Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?auto=format&fit=crop&w=500&q=80" alt="Brownie con Chocolate Extra" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-xl font-bold mb-2">Brownie con Chocolate Extra</h4>
+                                <p class="text-brand-chocolate/70 text-sm mb-4">Para los verdaderos amantes del chocolate. Inyecciones de fudge artesanal tibio.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-4">
+                                <span class="font-bold text-xl text-brand-chocolateLight">Bs. 18</span>
+                                <button onclick="pedirProducto('Brownie con Chocolate Extra', 'Bs. 18')" class="bg-brand-chocolate text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-brand-chocolateLight transition uppercase tracking-wider">Pedir Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1624353365286-3f8d62fade51?auto=format&fit=crop&w=500&q=80" alt="Brownie con Nueces" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-xl font-bold mb-2">Brownie con Nueces</h4>
+                                <p class="text-brand-chocolate/70 text-sm mb-4">El equilibrio perfecto entre la suavidad del chocolate y el crujiente de las nueces del Brasil.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-4">
+                                <span class="font-bold text-xl text-brand-chocolateLight">Bs. 18</span>
+                                <button onclick="pedirProducto('Brownie con Nueces', 'Bs. 18')" class="bg-brand-chocolate text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-brand-chocolateLight transition uppercase tracking-wider">Pedir Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-16">
+                <h3 class="font-serif text-2xl font-bold mb-8 flex items-center gap-3 text-brand-chocolateLight" data-aos="fade-right">
+                    <span class="w-8 h-0.5 bg-brand-rosa"></span> Tortas Tres Leches
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=500&q=80" alt="Tres Leches Tradicional" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-xl font-bold mb-2">Tres Leches Tradicional</h4>
+                                <p class="text-brand-chocolate/70 text-sm mb-4">Bizcochuelo ultra esponjoso sumergido en nuestra mezcla secreta de tres leches premium.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-4">
+                                <span class="font-bold text-xl text-brand-chocolateLight">Bs. 45</span>
+                                <button onclick="pedirProducto('Tres Leches Tradicional', 'Bs. 45')" class="bg-brand-chocolate text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-brand-chocolateLight transition uppercase tracking-wider">Pedir Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1605807646983-377bc5a76493?auto=format&fit=crop&w=500&q=80" alt="Tres Leches Chocolate" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-xl font-bold mb-2">Tres Leches Chocolate</h4>
+                                <p class="text-brand-chocolate/70 text-sm mb-4">La variante perfecta bañada con una reducción de chocolate con leche y cacao en polvo.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-4">
+                                <span class="font-bold text-xl text-brand-chocolateLight">Bs. 50</span>
+                                <button onclick="pedirProducto('Tres Leches Chocolate', 'Bs. 50')" class="bg-brand-chocolate text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-brand-chocolateLight transition uppercase tracking-wider">Pedir Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=500&q=80" alt="Tres Leches Frutal" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-xl font-bold mb-2">Tres Leches Frutal</h4>
+                                <p class="text-brand-chocolate/70 text-sm mb-4">Coronado con una fresca selección de fresas, duraznos y un toque delicado de chantilly.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-4">
+                                <span class="font-bold text-xl text-brand-chocolateLight">Bs. 55</span>
+                                <button onclick="pedirProducto('Tres Leches Frutal', 'Bs. 55')" class="bg-brand-chocolate text-white text-xs font-bold px-4 py-2.5 rounded-full hover:bg-brand-chocolateLight transition uppercase tracking-wider">Pedir Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-serif text-2xl font-bold mb-8 flex items-center gap-3 text-brand-chocolateLight" data-aos="fade-right">
+                    <span class="w-8 h-0.5 bg-brand-rosa"></span> Tortas de Autor
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative h-56 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" alt="Torta de Chocolate" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-lg font-bold mb-1">Torta de Chocolate</h4>
+                                <p class="text-brand-chocolate/70 text-xs mb-4">Húmeda, intensa y rellena de abundante dulce de leche.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="font-bold text-lg text-brand-chocolateLight">Bs. 120</span>
+                                <button onclick="pedirProducto('Torta de Chocolate', 'Bs. 120')" class="bg-brand-chocolate text-white text-xs font-bold px-3 py-2 rounded-full hover:bg-brand-chocolateLight transition uppercase">Pedir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative h-56 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?auto=format&fit=crop&w=400&q=80" alt="Torta Red Velvet" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-lg font-bold mb-1">Torta Red Velvet</h4>
+                                <p class="text-brand-chocolate/70 text-xs mb-4">Elegante color carmín con capas suaves de frosting de queso crema premium.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="font-bold text-lg text-brand-chocolateLight">Bs. 140</span>
+                                <button onclick="pedirProducto('Torta Red Velvet', 'Bs. 140')" class="bg-brand-chocolate text-white text-xs font-bold px-3 py-2 rounded-full hover:bg-brand-chocolateLight transition uppercase">Pedir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative h-56 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1464349172961-10442b37a73e?auto=format&fit=crop&w=400&q=80" alt="Torta de Vainilla" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-lg font-bold mb-1">Torta de Vainilla</h4>
+                                <p class="text-brand-chocolate/70 text-xs mb-4">Clásica, esponjosa, aromatizada con vainas de vainilla naturales.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="font-bold text-lg text-brand-chocolateLight">Bs. 100</span>
+                                <button onclick="pedirProducto('Torta de Vainilla', 'Bs. 100')" class="bg-brand-chocolate text-white text-xs font-bold px-3 py-2 rounded-full hover:bg-brand-chocolateLight transition uppercase">Pedir</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-brand-crema rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
+                        <div class="relative h-56 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13636?auto=format&fit=crop&w=400&q=80" alt="Torta de Frutas" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-serif text-lg font-bold mb-1">Torta de Frutas</h4>
+                                <p class="text-brand-chocolate/70 text-xs mb-4">Una explosión refrescante con crema pastelera y frutas de la estación.</p>
+                            </div>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="font-bold text-lg text-brand-chocolateLight">Bs. 130</span>
+                                <button onclick="pedirProducto('Torta de Frutas', 'Bs. 130')" class="bg-brand-chocolate text-white text-xs font-bold px-3 py-2 rounded-full hover:bg-brand-chocolateLight transition uppercase">Pedir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="galeria" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-brand-rosa font-serif text-xl italic block mb-2">Visualiza el Sabor</span>
+            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-brand-chocolate">Nuestra Galería de Arte</h2>
+            <div class="w-24 h-1 bg-brand-rosa mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="masonry">
+            <div class="masonry-item overflow-hidden rounded-xl shadow-md group relative cursor-pointer" data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80" alt="Brownie" class="w-full object-cover transition duration-500 group-hover:scale-110 group-hover:rotate-1">
+                <div class="absolute inset-0 bg-brand-chocolate/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white font-serif text-lg">Brownies Artesanales</div>
+            </div>
+            <div class="masonry-item overflow-hidden rounded-xl shadow-md group relative cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=500&q=80" alt="Tres Leches" class="w-full object-cover transition duration-500 group-hover:scale-110 group-hover:rotate-1">
+                <div class="absolute inset-0 bg-brand-chocolate/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white font-serif text-lg">Tres Leches Tradicional</div>
+            </div>
+            <div class="masonry-item overflow-hidden rounded-xl shadow-md group relative cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80" alt="Tortas" class="w-full object-cover transition duration-500 group-hover:scale-110 group-hover:rotate-1">
+                <div class="absolute inset-0 bg-brand-chocolate/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white font-serif text-lg">Tortas Temáticas</div>
+            </div>
+            <div class="masonry-item overflow-hidden rounded-xl shadow-md group relative cursor-pointer" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=500&q=80" alt="Preparación" class="w-full object-cover transition duration-500 group-hover:scale-110 group-hover:rotate-1">
+                <div class="absolute inset-0 bg-brand-chocolate/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white font-serif text-lg">Procesos de Alta Calidad</div>
+            </div>
+            <div class="masonry-item overflow-hidden rounded-xl shadow-md group relative cursor-pointer" data-aos="zoom-in" data-aos-delay="400">
+                <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=500&q=80" alt="Detalle" class="w-full object-cover transition duration-500 group-hover:scale-110 group-hover:rotate-1">
+                <div class="absolute inset-0 bg-brand-chocolate/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white font-serif text-lg">Ingredientes de Autor</div>
+            </div>
+            <div class="masonry-item overflow-hidden rounded-xl shadow-md group relative cursor-pointer" data-aos="zoom-in" data-aos-delay="500">
+                <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?auto=format&fit=crop&w=500&q=80" alt="Torta Red Velvet" class="w-full object-cover transition duration-500 group-hover:scale-110 group-hover:rotate-1">
+                <div class="absolute inset-0 bg-brand-chocolate/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white font-serif text-lg">Red Velvet Real</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="promos" class="py-24 bg-brand-rosa/20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand-chocolateLight font-serif text-xl italic block mb-2">Oportunidades Dulces</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-brand-chocolate">Promociones Semanales</h2>
+                <div class="w-24 h-1 bg-brand-chocolate mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl border-t-4 border-brand-chocolate shadow-md relative overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="absolute top-4 right-4 bg-brand-rosa text-brand-chocolate font-bold text-xs px-3 py-1 rounded-full uppercase">5+1</div>
+                        <h3 class="font-serif text-2xl font-bold mb-4 mt-2">Fiebre de Brownies</h3>
+                        <p class="text-brand-chocolate/80 mb-6">Compra 5 brownies de cualquier especialidad y recibe completamente <strong>gratis 1 brownie clásico adicional</strong>.</p>
+                    </div>
+                    <a href="https://wa.me/59169259874?text=Hola,%20quiero%20aplicar%20a%20la%20promoción%20Fiebre%20de%20Brownies." target="_blank" class="w-full py-3 bg-brand-chocolate text-white text-center font-bold rounded-xl block hover:bg-brand-chocolateLight transition">Reclamar Promo</a>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border-t-4 border-brand-chocolate shadow-md relative overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="absolute top-4 right-4 bg-brand-rosa text-brand-chocolate font-bold text-xs px-3 py-1 rounded-full uppercase">Cumpleaños</div>
+                        <h3 class="font-serif text-2xl font-bold mb-4 mt-2">Celebración Especial</h3>
+                        <p class="text-brand-chocolate/80 mb-6">Obtén un <strong>descuento exclusivo del 15%</strong> en cualquier Torta de Autor para celebrar tu cumpleaños. (Aplica reservando con anticipación).</p>
+                    </div>
+                    <a href="https://wa.me/59169259874?text=Hola,%20quiero%20información%20sobre%20el%20descuento%20de%20tortas%20para%20cumpleaños." target="_blank" class="w-full py-3 bg-brand-chocolate text-white text-center font-bold rounded-xl block hover:bg-brand-chocolateLight transition">Reclamar Promo</a>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border-t-4 border-brand-chocolate shadow-md relative overflow-hidden flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="absolute top-4 right-4 bg-brand-rosa text-brand-chocolate font-bold text-xs px-3 py-1 rounded-full uppercase">Delivery</div>
+                        <h3 class="font-serif text-2xl font-bold mb-4 mt-2">Domingos Dulces</h3>
+                        <p class="text-brand-chocolate/80 mb-6">Todos los domingos por compras mayores a Bs. 150, tu <strong>envío a domicilio es totalmente gratuito</strong> en zonas centrales.</p>
+                    </div>
+                    <a href="https://wa.me/59169259874?text=Hola,%20quiero%20hacer%20un%20pedido%20para%20el%20Domingo%20Dulce." target="_blank" class="w-full py-3 bg-brand-chocolate text-white text-center font-bold rounded-xl block hover:bg-brand-chocolateLight transition">Reclamar Promo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand-rosa font-serif text-xl italic block mb-2">Clientes Felices</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-brand-chocolate">Lo que Dicen de Nosotros</h2>
+                <div class="w-24 h-1 bg-brand-rosa mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-brand-crema p-8 rounded-2xl shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-amber-500 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-brand-chocolate/90 italic mb-6">"Los brownies más ricos que probé en mi vida. Crocantitos por fuera y melcochosos por dentro, una adicción total."</p>
+                    <h5 class="font-bold text-sm text-brand-chocolateLight">- Valeria M.</h5>
+                </div>
+                <div class="bg-brand-crema p-8 rounded-2xl shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-amber-500 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-brand-chocolate/90 italic mb-6">"La torta tres leches estaba espectacular. Se nota que usan ingredientes frescos y de excelente calidad. Muy recomendados."</p>
+                    <h5 class="font-bold text-sm text-brand-chocolateLight">- Carlos D.</h5>
+                </div>
+                <div class="bg-brand-crema p-8 rounded-2xl shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-amber-500 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-brand-chocolate/90 italic mb-6">"Excelente atención y entrega rápida. Hice el pedido corporativo por WhatsApp y todo llegó impecable y a tiempo."</p>
+                    <h5 class="font-bold text-sm text-brand-chocolateLight">- Mariana R.</h5>
+                </div>
+                <div class="bg-brand-crema p-8 rounded-2xl shadow-sm" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-amber-500 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-brand-chocolate/90 italic mb-6">"La torta Red Velvet fue el centro de atención en mi cumpleaños. Deliciosa y con una presentación super premium."</p>
+                    <h5 class="font-bold text-sm text-brand-chocolateLight">- Sebastian P.</h5>
+                </div>
+                <div class="bg-brand-crema p-8 rounded-2xl shadow-sm" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-amber-500 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-brand-chocolate/90 italic mb-6">"Me fascina que los pedidos por WhatsApp sean tan rápidos y eficientes. En menos de una hora ya tenía mis postres listos."</p>
+                    <h5 class="font-bold text-sm text-brand-chocolateLight">- Andrea L.</h5>
+                </div>
+                <div class="bg-brand-crema p-8 rounded-2xl shadow-sm" data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-amber-500 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-brand-chocolate/90 italic mb-6">"Tienen las mejores variedades de Tres leches. El de chocolate es una locura absoluta. ¡Sin duda volveré a comprar!"</p>
+                    <h5 class="font-bold text-sm text-brand-chocolateLight">- Alejandro F.</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-brand-crema border-t border-brand-rosa/20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand-rosa font-serif text-xl italic block mb-2">Despeja tus dudas</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-brand-chocolate">Preguntas Frecuentes</h2>
+                <div class="w-24 h-1 bg-brand-rosa mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden" data-aos="fade-up">
+                    <button onclick="toggleFaq(1)" class="w-full p-6 text-left font-serif font-bold text-lg flex justify-between items-center focus:outline-none">
+                        <span>¿Realizan entregas a domicilio?</span>
+                        <i id="faq-icon-1" class="fas fa-chevron-down text-brand-rosa transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden p-6 pt-0 text-brand-chocolate/80 border-t border-brand-crema">
+                        Sí, cubrimos gran parte de la ciudad mediante servicio de delivery propio. El costo varía de acuerdo a la distancia exacta de tu ubicación.
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden" data-aos="fade-up">
+                    <button onclick="toggleFaq(2)" class="w-full p-6 text-left font-serif font-bold text-lg flex justify-between items-center focus:outline-none">
+                        <span>¿Aceptan pedidos personalizados?</span>
+                        <i id="faq-icon-2" class="fas fa-chevron-down text-brand-rosa transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden p-6 pt-0 text-brand-chocolate/80 border-t border-brand-crema">
+                        ¡Por supuesto! Personalizamos tamaños, dedicatorias y algunos sabores especiales en nuestras Tortas de Autor para adaptarnos a tus eventos especiales.
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden" data-aos="fade-up">
+                    <button onclick="toggleFaq(3)" class="w-full p-6 text-left font-serif font-bold text-lg flex justify-between items-center focus:outline-none">
+                        <span>¿Con cuánto tiempo de anticipación debo reservar?</span>
+                        <i id="faq-icon-3" class="fas fa-chevron-down text-brand-rosa transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden p-6 pt-0 text-brand-chocolate/80 border-t border-brand-crema">
+                        Para postres del menú diario (brownies y porciones individuales), puedes pedir el mismo día. Para tortas enteras o pedidos personalizados, solicitamos un mínimo de 24 a 48 horas de anticipación.
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden" data-aos="fade-up">
+                    <button onclick="toggleFaq(4)" class="w-full p-6 text-left font-serif font-bold text-lg flex justify-between items-center focus:outline-none">
+                        <span>¿Qué métodos de pago aceptan?</span>
+                        <i id="faq-icon-4" class="fas fa-chevron-down text-brand-rosa transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-ans-4" class="hidden p-6 pt-0 text-brand-chocolate/80 border-t border-brand-crema">
+                        Aceptamos transferencias bancarias, pagos mediante código QR de manera inmediata, efectivo al momento de la entrega o retiro en tienda.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-chocolate text-white py-16 px-4 sm:px-6 lg:px-8 border-t border-brand-rosa/10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <a href="#" class="font-serif text-2xl font-bold tracking-wide text-white block mb-4">
+                    🌸 Dulces <span class="text-brand-rosa font-light">Delicias</span>
+                </a>
+                <p class="text-white/70 text-sm leading-relaxed">Alta repostería artesanal para complacer los paladares más exigentes de la ciudad.</p>
+            </div>
+            <div>
+                <h4 class="font-serif text-lg font-bold mb-4 border-b border-brand-rosa/20 pb-2">Horarios de Atención</h4>
+                <p class="text-white/70 text-sm leading-relaxed">Lunes a Domingo<br>09:00 AM - 09:00 PM</p>
+            </div>
+            <div>
+                <h4 class="font-serif text-lg font-bold mb-4 border-b border-brand-rosa/20 pb-2">Contacto Directo</h4>
+                <p class="text-white/70 text-sm leading-relaxed mb-2"><i class="fab fa-whatsapp text-brand-rosa mr-2"></i> +591 69259874</p>
+                <p class="text-white/70 text-sm leading-relaxed"><i class="fas fa-envelope text-brand-rosa mr-2"></i> info@dulcesdelicias.com</p>
+            </div>
+            <div>
+                <h4 class="font-serif text-lg font-bold mb-4 border-b border-brand-rosa/20 pb-2">Síguenos</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-rosa hover:text-brand-chocolate transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-rosa hover:text-brand-chocolate transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-rosa hover:text-brand-chocolate transition"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center border-t border-white/10 mt-12 pt-6 text-xs text-white/50">
+            &copy; 2026 Dulces Delicias. Todos los derechos reservados. Desarrollado con pasión.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/59169259874?text=Hola,%20deseo%20información%20sobre%20sus%20postres." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-emerald-600 transition-transform duration-300 hover:scale-110 text-2xl group animate-bounce">
+        <i class="fab fa-whatsapp"></i>
+        <span class="absolute right-16 bg-brand-chocolate text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap shadow-md pointer-events-none">¿Antojo de algo dulce?</span>
+    </a>
+
+    <div class="fixed bottom-6 left-6 z-50">
+        <button onclick="toggleChat()" class="bg-brand-chocolate text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-brand-chocolateLight transition duration-300 text-xl focus:outline-none relative">
+            <i id="chat-icon" class="fas fa-comment-dots"></i>
+            <span class="absolute -top-1 -right-1 w-3 h-3 bg-brand-rosa rounded-full"></span>
+        </button>
+
+        <div id="chat-window" class="hidden fixed bottom-24 left-6 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-brand-rosa/30 flex flex-col overflow-hidden max-h-[450px]">
+            <div class="bg-brand-chocolate text-white p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-brand-rosa text-brand-chocolate rounded-full flex items-center justify-center font-bold text-sm">🍰</div>
+                    <div>
+                        <h4 class="font-bold text-sm">Asistente Dulce Delicia</h4>
+                        <span class="text-[10px] text-brand-rosa">En línea de inmediato</span>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white/80 hover:text-white"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="chat-body" class="p-4 flex-grow overflow-y-auto space-y-3 text-sm h-72 bg-brand-crema/40">
+                <div class="bg-white p-3 rounded-xl rounded-tl-none shadow-sm max-w-[85%] border border-brand-rosa/10">
+                    ¡Hola! ✨ Bienvenido a Dulces Delicias. Estoy aquí para recomendarte el postre perfecto o ayudarte a ordenar. ¿Qué se te antoja hoy?
+                </div>
+            </div>
+            <div class="p-2 bg-white border-t border-brand-crema flex flex-wrap gap-1.5">
+                <button onclick="botTrigger('brownies')" class="text-xs bg-brand-rosa/20 hover:bg-brand-rosa text-brand-chocolate border border-brand-rosa/40 px-2.5 py-1.5 rounded-full transition font-medium">Recomendar Brownies</button>
+                <button onclick="botTrigger('tortas')" class="text-xs bg-brand-rosa/20 hover:bg-brand-rosa text-brand-chocolate border border-brand-rosa/40 px-2.5 py-1.5 rounded-full transition font-medium">Recomendar Tortas</button>
+                <button onclick="botTrigger('tresleches')" class="text-xs bg-brand-rosa/20 hover:bg-brand-rosa text-brand-chocolate border border-brand-rosa/40 px-2.5 py-1.5 rounded-full transition font-medium">Tres Leches</button>
+                <button onclick="botTrigger('faq')" class="text-xs bg-brand-rosa/20 hover:bg-brand-rosa text-brand-chocolate border border-brand-rosa/40 px-2.5 py-1.5 rounded-full transition font-medium">Preguntas frecuentes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar animaciones de scroll
+        AOS.init({
+            once: true,
+            duration: 800
+        });
+
+        // Menú Responsive Móvil
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars';
+            } else {
+                icon.className = 'fas fa-times';
+            }
+        }
+
+        // Sistema Accordion para FAQs
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faq-ans-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            ans.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Sistema Automatizado de Enlace de Compra por WhatsApp
+        function pedirProducto(nombre, precio) {
+            const mensaje = encodeURIComponent(`Hola Dulces Delicias, deseo realizar un pedido de: ${nombre} (${precio}).`);
+            window.open(`https://wa.me/59169259874?text=${mensaje}`, '_blank');
+        }
+
+        // Lógica de Ventana de Chatbot IA Visual
+        function toggleChat() {
+            const chatWin = document.getElementById('chat-window');
+            const chatIcon = document.getElementById('chat-icon');
+            chatWin.classList.toggle('hidden');
+            if(chatWin.classList.contains('hidden')) {
+                chatIcon.className = 'fas fa-comment-dots';
+            } else {
+                chatIcon.className = 'fas fa-chevron-down';
+            }
+        }
+
+        // Lógica de Respuestas Inteligentes del Chatbot
+        function botTrigger(option) {
+            const chatBody = document.getElementById('chat-body');
+            
+            let userMsg = "";
+            let botMsg = "";
+
+            if(option === 'brownies') {
+                userMsg = "Recomiéndame un Brownie";
+                botMsg = "Te sugiero intensamente nuestro <strong>Brownie con Chocolate Extra (Bs. 18)</strong>, es el favorito de la casa, súper melcochoso y cargado de fudge artesanal fluido. ¿Te gustaría pedirlo ahora mismo?";
+            } else if(option === 'tortas') {
+                userMsg = "Recomiéndame una Torta";
+                botMsg = "Para celebraciones la reina indiscutible es nuestra elegante <strong>Torta Red Velvet (Bs. 140)</strong> con sutil frosting de queso crema. Si buscas algo para acompañar la tarde, la Torta de Chocolate te fascinará.";
+            } else if(option === 'tresleches') {
+                userMsg = "Quiero saber sobre las Tres Leches";
+                botMsg = "Nuestra <strong>Tres Leches Frutal (Bs. 55)</strong> es increíblemente refrescante y húmeda, coronada con fresas frescas y duraznos seleccionados. ¡Ideal para compartir en familia!";
+            } else if(option === 'faq') {
+                userMsg = "Preguntas Frecuentes";
+                botMsg = "Realizamos entregas a domicilio todos los días. Aceptamos transferencias, Efectivo y pagos por código QR. Recuerda ordenar tus tortas completas con 24/48 horas de anticipación.";
+            }
+
+            // Append Mensaje de Usuario
+            chatBody.innerHTML += `
+                <div class="bg-brand-chocolate text-white p-3 rounded-xl rounded-tr-none shadow-sm max-w-[85%] ml-auto text-right">
+                    ${userMsg}
+                </div>
+            `;
+            
+            // Auto Scroll
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Simular respuesta inteligente en delay corto
+            setTimeout(() => {
+                chatBody.innerHTML += `
+                    <div class="bg-white p-3 rounded-xl rounded-tl-none shadow-sm max-w-[85%] border border-brand-rosa/10">
+                        ${botMsg}
+                    </div>
+                `;
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
